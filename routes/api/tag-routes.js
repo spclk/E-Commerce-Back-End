@@ -17,10 +17,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => { 
   // find a single tag by its `id`
   try {
-    const getOneTag = await Tag.findByPk({
+    const getOneTag = await Tag.findByPk(req.params.id,{
       include: [
         { model: Product, through: ProductTag, as: 'tag_id' },
       ],
